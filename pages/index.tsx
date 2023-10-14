@@ -1,10 +1,16 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import homeStyles from "@/styles/Home.module.css";
+import { GetStaticProps, NextPage } from "next";
+import { getSortedPostsData } from "@/lib/posts";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+const Home: NextPage = ({
+  allPostsData: {
+    allPostsData: { title: string, date: string, id: string },
+  }[],
+}) => {
   return (
     <>
       <Head>
@@ -20,4 +26,12 @@ export default function Home() {
       </section>
     </>
   );
-}
+};
+export default Home;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const allPostsData = getSortedPostsData();
+  return {
+    prop: { allPostsData },
+  };
+};
