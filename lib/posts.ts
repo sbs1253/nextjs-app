@@ -10,7 +10,7 @@ console.log("postDirectory ", postDirectory);
 export const getSortedPostsData = () => {
   const fileNames = fs.readdirSync(postDirectory);
   console.log("fileName ", fileNames);
-
+  // [ 'pre.rendering.md', 'ssg-ssr.md' ]
   const allPostsData = fileNames.map((fileName) => {
     const id = fileName.replace(/\.md$/, "");
 
@@ -33,6 +33,8 @@ export const getSortedPostsData = () => {
 
 export function getAllPostsIds() {
   const fileNames = fs.readdirSync(postDirectory);
+  console.log("postDirectory", postDirectory);
+  //C:\Users\user\Desktop\Frontend\inflearn\nextjs-app\posts
   return fileNames.map((fileName) => {
     return {
       params: {

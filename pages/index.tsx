@@ -4,8 +4,7 @@ import homeStyles from "@/styles/Home.module.css";
 import { GetStaticProps } from "next";
 import { getSortedPostsData } from "@/lib/posts";
 import Link from "next/link";
-
-const inter = Inter({ subsets: ["latin"] });
+import PostStyles from "../styles/Post.module.css";
 
 export default function Home({
   allPostsData,
@@ -13,7 +12,7 @@ export default function Home({
   allPostsData: { title: string; date: string; id: string }[];
 }) {
   return (
-    <>
+    <div className={PostStyles.container}>
       <Head>
         <title>Bbang app</title>
       </Head>
@@ -35,7 +34,7 @@ export default function Home({
           ))}
         </ul>
       </section>
-    </>
+    </div>
   );
 }
 
